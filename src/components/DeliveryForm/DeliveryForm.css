@@ -1,0 +1,65 @@
+.buy-form_active {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: #BC9657;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+}
+
+.buy-form {
+    display: none;
+}
+
+.buy-form_content {
+    display: none;
+}
+
+.buy-form_content_active {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background-color: rgba(70, 70, 70, 0.7);
+    width: 100vw;
+    height: 100%;
+}
+
+.name-input, .lastname-input, .adress-input {
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.self-delivery-checkbox {
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.self-delivery-list {
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.close-form_button {
+    display: flex;
+    background-color: aliceblue;
+    padding: 10px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+}

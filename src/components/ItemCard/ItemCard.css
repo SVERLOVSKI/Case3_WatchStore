@@ -1,0 +1,141 @@
+.card_item {
+    background-color: rgb(233, 233, 233);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.item_photo {
+    display: block;
+    width: 210px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    border-radius: 15px;
+}
+
+.item_name {
+    display: block;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #BC9657;
+    font-size: 20px;
+    text-align: center;
+}
+
+.item_description {
+    margin-bottom: 50px;
+}
+
+.item_price {
+    color: #BC9657;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.card_interface {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buy_button {
+    display: block;
+    background-color: #BC9657;
+    padding: 15px 25px;
+    border-radius: 15px;
+}
+
+.item_info {
+    padding: 15px 25px;
+    border-radius: 15px;
+    background-color: aliceblue;
+    text-align: center;
+    color: grey;
+}
+
+.delete-item_icon {
+    margin-left: 10px;
+    width: 20px;
+}
+
+.decrease_button, .increase_button {
+    background-color: #BC9657;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+}
+
+.decrease_button {
+    margin-right: 10px;
+}
+
+.increase_button {
+    margin-left: 10px;
+}
+
+.info_bar {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 809px) {
+    .card_interface {
+        justify-content: end;
+    }
+
+    .item_price {
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 460px) {
+    .card_interface {
+        flex-direction: column;
+    }
+
+    .item_price {
+        margin-right: 0px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .item_info {
+        margin-bottom: 15px;
+    }
+
+    .delete-item_icon {
+        margin-left: 0px;
+    }
+
+    .item_description {
+        text-align: center;
+    }
+}
+
+@media (max-width: 425px) {
+    .item_description {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .item_name {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .item_price {
+        font-size: 16px;
+    }
+
+    .buy_button {
+        padding: 10px;
+    }
+
+    .item_info {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,52 @@
+.contacts_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 40px;
+}
+
+.contacts_title {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.contact_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.online_list, .offline_list {
+    background-color: #BC9657;
+    padding: 20px;
+    border-radius: 15px;
+    width: 400px;
+}
+
+.online-list_subtitle, .offline-list_subtitle {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.phone_number, .email_adress {
+    display: block !important
+}
+
+.phone_number, .main_shop {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .contacts_title {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 375px) {
+    .email_adress, .phone_number, .main_shop {
+        font-size: 12px;
+    }
+
+    .online-list_subtitle, .offline-list_subtitle {
+        font-size: 14px;
+    }
+}

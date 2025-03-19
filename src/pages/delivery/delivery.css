@@ -1,0 +1,31 @@
+.main_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 40px;
+}
+
+.delivery_bar {
+    margin-bottom: 20px;
+}
+
+.delivery_bar, .payment_bar {
+    background-color: #BC9657;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.bar_logo {
+    margin-right: 20px;
+}
+
+.delivery_title, .payment_title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.delivery_information, .payment_information {
+    margin-bottom: 15px;
+}
