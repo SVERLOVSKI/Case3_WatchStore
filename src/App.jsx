@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-    <Router>
+    <Router basename='/Case3_WatchStore'>
 				<Routes>
 					<Route path="/" element={<Home />} />
           <Route path="/contacts" element={<Contacts />} />
