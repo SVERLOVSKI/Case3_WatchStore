@@ -1,13 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import './Header.css'
-import userLogo from './User.svg'
 import cartLogo from './Cart.svg'
-import Button from './../Button/Button'
+import Button from '../Button/Button'
 
-export default function Header({ onClick }) {
-    const activeLinkClass = 'nav-list__link nav-list__link_active';
-	const linkClass = 'nav-list__link';
+interface HeaderProps {
+    onClick: () => void
+}
+
+const Header:React.FC<HeaderProps> = ({ onClick }) => {
 
     return (
         <header className='header'>
@@ -16,32 +17,17 @@ export default function Header({ onClick }) {
                 <nav className="header_nav">
                     <ul className="navigation_list">
                         <li className='navigation_list-item'>
-                            <NavLink
-                                to="/"
-                                className={({ isActive }) =>
-                                    isActive ? activeLinkClass : linkClass
-                                }
-                            >
+                            <NavLink to="/" className='navigation_list-item-link'>
                                 Главная
                             </NavLink>
                         </li>
                         <li className='navigation_list-item'>
-                            <NavLink
-                                to="/contacts"
-                                className={({ isActive }) =>
-                                    isActive ? activeLinkClass : linkClass
-                                }
-                            >
+                            <NavLink to="/contacts" className='navigation_list-item-link'>
                                 Контакты
                             </NavLink>
                         </li>
                         <li className='navigation_list-item'>
-                            <NavLink
-                                to="/delivery"
-                                className={({ isActive }) =>
-                                    isActive ? activeLinkClass : linkClass
-                                }
-                            >
+                            <NavLink to="/delivery" className='navigation_list-item-link'>
                                 Доставка и оплата
                             </NavLink>
                         </li>
@@ -49,10 +35,11 @@ export default function Header({ onClick }) {
                 </nav>
                 <div className="user_bar">
                     <Button onClick={onClick} className='menu_button'>Меню</Button>
-                    <a href=""><img className='profile-icon' src={userLogo} alt="" /></a>
                     <NavLink to='/cart'><img className='cart-icon' src={cartLogo} alt="" /></NavLink>
                 </div>
             </div>
         </header>
     )
 }
+
+export default Header

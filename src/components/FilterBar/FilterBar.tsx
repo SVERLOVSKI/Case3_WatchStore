@@ -1,16 +1,34 @@
-import React, { useContext } from 'react'
+import React, {useState } from 'react'
 import './FilterBar.css'
-import { FiltersContext } from './../../pages/home/home'
+import ShowMoreIcon from './ChevronBigDown.svg'
 
-export default function FilterBar() {
-    const [brand, setBrand, minPrice, setMinPrice, maxPrice, setMaxPrice, inStock, setInStock, handleFilter] = useContext(FiltersContext)
+
+interface FilterBarProps {
+    brand:string
+    setBrand:(value:string) => void
+    minPrice:string
+    setMinPrice:(value:string) => void
+    maxPrice:string
+    setMaxPrice:(value:string) => void
+    inStock:boolean
+    setInStock:(checked:boolean) => void
+    handleFilter:() => void
+}
+
+const FilterBar:React.FC<FilterBarProps> = ({ brand, setBrand, minPrice, setMinPrice, maxPrice, setMaxPrice, inStock, setInStock, handleFilter }) => {
+    const [filterVisibility, setFilterVisibility] = useState(true)
+
+    function showFiltersToggle() {
+        setFilterVisibility(!filterVisibility)
+    }
+
     return (
         <section className="filter">
-            <div className="filter_container">
-                <h2 className='filter_title'>Фильтры</h2>
+            <div className={filterVisibility ? 'filter_container_active' : 'filter_container'}>
+                <h2 className='filter_title'>Фильтры</h2><img onClick={showFiltersToggle} className={filterVisibility ? 'show-more-button_hidden' : 'show-more-button'} src={ShowMoreIcon} alt="Show more button"/>
                 <div className="filter_list">
                     <div className="another_filters">
-                    <label className='availability_label'>
+                        <label className='availability_label'>
                             В наличии:
                             <input
                                 checked={inStock}
@@ -22,7 +40,7 @@ export default function FilterBar() {
                         </label>
                         <label>
                             Бренд:
-                            <select onChange={(e) => setBrand(e.target.value)} className='brand_select' name="brand">
+                            <select value={brand} onChange={(e) => setBrand(e.target.value)} className='brand_select' name="brand">
                                 <option value="">Все</option>
                                 <option value="Casio">Casio</option>
                                 <option value="Lee Cooper">Lee Cooper</option>
@@ -61,3 +79,5 @@ export default function FilterBar() {
         </section>
     )
 }
+
+export default FilterBar

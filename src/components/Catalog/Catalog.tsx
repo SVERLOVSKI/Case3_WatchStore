@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react'
 import ItemCard from '../ItemCard/ItemCard'
-import Data from './data/data'
 import './Catalog.css'
+import React from 'react';
+import { CatalogData } from './data/data';
 
-export default function Catalog({ ProductList }) {
+interface CatalogProps {
+  ProductList: CatalogData[]
+}
+
+const Catalog:React.FC<CatalogProps> = ({ ProductList }) => {
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
@@ -14,7 +19,7 @@ export default function Catalog({ ProductList }) {
   }, [cart]);
 
   return (
-    <section className='catalog' id='catalog_id'>
+    <section className='catalog' id='catalog'>
       <div className="catalog_container">
         <ul className="catalog_list">
           {ProductList.map((card) => {
@@ -25,7 +30,7 @@ export default function Catalog({ ProductList }) {
                 ItemPhoto={card.img}
                 ItemName={card.name}
                 ItemDescription={card.description}
-                ItemPrice={card.price}
+                ItemPrice={card.price as unknown as number}
                 cart={cart}
                 setCart={setCart}
               />
@@ -36,3 +41,5 @@ export default function Catalog({ ProductList }) {
     </section>
   )
 }
+
+export default Catalog

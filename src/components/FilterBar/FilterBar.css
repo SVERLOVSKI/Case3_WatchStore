@@ -1,111 +1,149 @@
 .filter_container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 30px 40px;
+    padding: 20px;
+    border: 1px solid black;
+    margin-bottom: 50px;
+    background-color: rgb(238, 238, 238);
+    overflow: hidden;
+    height: 100px;
 }
 
-.filter {
-    background-color: rgb(248, 235, 192);
-    box-shadow: 0px 3px 10px -5px rgba(0, 0, 0, 0.2);
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-.filter_title {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.brand_select {
-    margin-left: 10px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
+.filter_container_active {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid black;
+    margin-bottom: 50px;
+    background-color: rgb(238, 238, 238);
+    height: auto;
+    overflow: visible;
 }
 
 .filter_list {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
     gap: 20px;
-    background-color: rgb(133, 124, 105);
-    padding: 20px;
-    border-radius: 15px;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .price_filter {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+}
+
+.filter_title {
+    font-size: 26px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: inline-block;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.show-more-button {
+    margin-left: 15px;
+    margin-top: 5px;
+    cursor: pointer;
+    rotate: 180deg;
+}
+
+.show-more-button_hidden {
+    margin-left: 15px;
+    margin-top: 5px;
+    cursor: pointer;
+    rotate: 360deg;
+}
+
+.availability_checkbox {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.availability_label {
+    display: block;
+    padding-top: 5px;
 }
 
 .another_filters {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: space-between;
 }
 
-.minprice_input, .maxprice_input {
+.price_filter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.brand_select, .minprice_input, .maxprice_input {
     margin-left: 10px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    background-color: #fff;
 }
 
 .minprice_input {
     margin-left: 16px;
 }
 
-.availability_checkbox {
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.availability_label {
-    width: 110px;
-    display: flex;
-    height: 39px;
-    align-items: center;
-}
-
 .filters_button {
-    background-color: #fff;
+    border: 1px solid black;
     padding: 20px;
-    border-radius: 15px;
-    margin-left: auto;
+    transition-duration: 150ms;
+    transition-property: background-color;
+    background-color: #fff;
 }
 
-@media (max-width: 580px) {
-    .minprice_input, .maxprice_input {
-        margin: 10px 0px 0px 0px
-    }
+.filters_button:hover {
+    background-color: rgb(226, 226, 226);
 }
 
-@media (max-width: 425px) {
-    .minprice_input, .maxprice_input {
-        width: 100px;
-    }
-
-    .brand_select {
-        margin: 10px 0px 0px 10px;
-    }
+.filters_button:active {
+    background-color: rgb(196, 196, 196);
 }
 
-@media (max-width: 381px) {
 
-    .brand_select {
+@media (max-width: 769px) {
+    .filter_list {
         display: block;
-        margin: 10px 0px 0px 0px;
-        width: 100px;
     }
 
-    label {
-        font-size: 14px;
+    .another_filters, .price_filter {
+        margin-bottom: 20px;
     }
 
-    .filters_button {
-        font-size: 14px;
-        padding: 10px;
-        margin-left: 0px;
+}
+
+@media (max-width: 417px) {
+    .minprice_input, .maxprice_input {
+        margin-left: 0;
+    }
+
+    .filter_title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 320px) {
+    .filter_title {
+        font-size: 18px;
+    }
+
+    .show-more-button {
+        margin-left: 10px;
+        margin-top: 0px;
+        cursor: pointer;
+        rotate: 180deg;
+    }
+
+    .show-more-button_hidden {
+        margin-left: 10px;
+        margin-top: 0px;
+        cursor: pointer;
+        rotate: 360deg;
     }
 }

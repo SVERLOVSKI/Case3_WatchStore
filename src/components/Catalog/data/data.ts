@@ -4,7 +4,17 @@ import LeeCooperOne from './imgs/Lee Cooper LC07626.399/LC07626.399_1.png'
 import LeeCooperTwo from './imgs/Lee Cooper LC07046.530/LC07046.530.png'
 import LeeCooperThree from './imgs/Lee Cooper LC07546.390/LC07546.390.png'
 
-const Data = [
+export interface CatalogData {
+    id: number
+    name: string
+    brand: string
+    description: string
+    price: string
+    img: any
+    inStock: boolean,
+}
+
+const Data:CatalogData[] = [
     {
         id: 19038501,
         name: 'Casio Collection Vintage',

@@ -1,0 +1,35 @@
+.slider {
+    display: flex;
+    align-items: center;
+}
+
+.slider-image {
+    max-width: 300px;
+}
+
+.slider-button {
+    border: 1px solid black;
+    padding: 10px;
+    transition-property: background-color;
+    transition-duration: 150ms;
+}
+
+.slider-button:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+.slider-button:active {
+    background-color: rgb(211, 211, 211);
+}
+
+@media (max-width: 1024px) {
+    .slider-image {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider {
+        display: none;
+    }
+}

@@ -1,20 +1,29 @@
-import { useState } from 'react'
+import { EventHandler, useState } from 'react'
 import './DeliveryForm.css'
+import React from 'react';
+import type { ChangeEvent } from 'react';
 
-export default function DeliveryForm({ closeForm, formStatus, setFormStatus }) {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [address, setAddress] = useState('');
-    const [pickup, setPickup] = useState(false);
-    const [selectedStores, setSelectedStores] = useState([]);
-    const [complete, setComplete] = useState(false)
+interface DeliveryFormProps {
+    closeForm:() => void,
+    formStatus:boolean
+    setFormStatus: (formStatus:boolean) => void
+}
+
+const DeliveryForm:React.FC<DeliveryFormProps> =({ closeForm, formStatus, setFormStatus }) => {
+    const [firstName, setFirstName] = useState<string>('');
+    const [lastName, setLastName] = useState<string>('');
+    const [phone, setPhone] = useState<string>('')
+    const [address, setAddress] = useState<string>('');
+    const [pickup, setPickup] = useState<boolean>(false);
+    const [selectedStores, setSelectedStores] = useState<string[]>([]);
+    const [complete, setComplete] = useState<boolean>(false)
 
     const stores = [
         { value: 'store1', label: 'Литейный проспект, 64/78' },
         { value: 'store2', label: 'Ленина, 18/49' },
     ];
 
-    const handleStoreChange = (event) => {
+    const handleStoreChange = (event:ChangeEvent<HTMLSelectElement>) => {
         const { options } = event.target;
         const values = [];
         for (let i = 0; i < options.length; i++) {
@@ -30,6 +39,7 @@ export default function DeliveryForm({ closeForm, formStatus, setFormStatus }) {
             setFirstName('')
             setLastName('')
             setAddress('')
+            setPhone('')
             setPickup(false)
             setComplete(true)
             localStorage.removeItem('cart')
@@ -40,8 +50,8 @@ export default function DeliveryForm({ closeForm, formStatus, setFormStatus }) {
         return (
             <div className={formStatus ? 'buy-form_content_active' : 'buy-form_content'}>
                 <div className={formStatus ? 'buy-form_active' : 'buy-form'}>
-                    <button className='close-form_button' onClick={() => {closeForm; setComplete(false); setFormStatus()}}>Закрыть</button>
-                    <p className="info">Заявка оставлена!</p>
+                    <button className='close-form_button' onClick={() => {closeForm(), setComplete(false), setFormStatus(!formStatus)}}>Закрыть</button>
+                    <p className="info">Ваш заказ оформлен!</p>
                 </div>
             </div>
         )
@@ -57,7 +67,6 @@ export default function DeliveryForm({ closeForm, formStatus, setFormStatus }) {
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                         required
-
                     />
                 </div>
                 <div className='lastname-block'>
@@ -68,7 +77,16 @@ export default function DeliveryForm({ closeForm, formStatus, setFormStatus }) {
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         required
-
+                    />
+                </div>
+                <div className='phone-block'>
+                    <input
+                        className='phone-input'
+                        placeholder='Номер телефона'
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        required
                     />
                 </div>
                 <div className='adress-block'>
@@ -108,3 +126,5 @@ export default function DeliveryForm({ closeForm, formStatus, setFormStatus }) {
         </div>
     );
 };
+
+export default DeliveryForm

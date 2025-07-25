@@ -2,7 +2,12 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import './Menu.css'
 
-export default function Menu({visibleMenu, onClick }) {
+interface MenuProps {
+  visibleMenu: boolean
+  onClick: ()=> void
+}
+
+const Menu:React.FC<MenuProps> = ({visibleMenu, onClick }) => {
   const activeLinkClass = 'nav-list__link nav-list__link_active';
 	const linkClass = 'nav-list__link';
 
@@ -54,3 +59,4 @@ export default function Menu({visibleMenu, onClick }) {
   )
 }
 
+export default Menu

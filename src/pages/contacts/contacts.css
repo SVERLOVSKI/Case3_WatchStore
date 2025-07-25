@@ -1,52 +1,57 @@
 .contacts_container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 10px 40px;
-}
-
-.contacts_title {
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-
-.contact_list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.online_list, .offline_list {
-    background-color: #BC9657;
     padding: 20px;
-    border-radius: 15px;
-    width: 400px;
+    
 }
 
-.online-list_subtitle, .offline-list_subtitle {
-    margin-bottom: 30px;
-    font-weight: bold;
+.contacts {
+    border: 1px solid black;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.contacts_bar, .store_bar {
+    border: 1px solid black;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(243, 243, 243);
+}
+
+.contacts_title, .store_title {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 100;
+}
+
+.online-list_subtitle {
+    margin-bottom: 25px;
 }
 
 .phone_number, .email_adress {
-    display: block !important
-}
-
-.phone_number, .main_shop {
+    display: block;
     margin-bottom: 10px;
 }
 
-@media (max-width: 768px) {
-    .contacts_title {
-        font-size: 30px;
-    }
+.main_shop {
+    margin-bottom: 10px;
 }
 
-@media (max-width: 375px) {
-    .email_adress, .phone_number, .main_shop {
-        font-size: 12px;
+.bar_logo {
+    margin-right: 10px;
+}
+
+@media (max-width: 425px) {
+    .contacts_title, .offline-list_subtitle {
+        font-size: 28px;
     }
 
-    .online-list_subtitle, .offline-list_subtitle {
-        font-size: 14px;
+    .email_adress {
+        display: block;
+        margin-top: 15px;
     }
 }

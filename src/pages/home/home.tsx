@@ -1,12 +1,12 @@
-import React, { useState, createContext, useContext } from 'react'
+import React, { useState } from 'react'
 import Header from '../../components/Header/Header'
 import Promo from '../../components/Promo/Promo'
 import Catalog from '../../components/Catalog/Catalog'
 import FilterBar from '../../components/FilterBar/FilterBar'
 import Data from '../../components/Catalog/data/data'
 import Menu from '../../components/Menu/Menu'
+import Footer from '../../components/Footer/Footer'
 
-export const FiltersContext = createContext(null);
 
 export default function Home() {
   const [brand, setBrand] = useState('');
@@ -53,13 +53,13 @@ export default function Home() {
       <main className="main">
         <div className="main_container">
           <Promo />
-          <FiltersContext.Provider value={[brand, setBrand, minPrice, setMinPrice, maxPrice, setMaxPrice, inStock, setInStock, handleFilter]}>
-            <FilterBar />
-          </FiltersContext.Provider>
+          <h2 className='catalog_title'>НАШИ ТОВАРЫ</h2>
+            <FilterBar brand={brand} setBrand={setBrand} minPrice={minPrice} setMinPrice={setMinPrice} maxPrice={maxPrice} setMaxPrice={setMaxPrice} inStock={inStock} setInStock={setInStock} handleFilter={handleFilter} />
           <Catalog
           ProductList={filteredProducts} />
         </div>
       </main>
+      <Footer />
     </>
   )
 }

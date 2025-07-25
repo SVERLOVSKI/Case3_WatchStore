@@ -4,10 +4,11 @@ import './delivery.css'
 import DeliveryLogo from './DeliveryTruck.svg'
 import PaymentLogo from './Money.svg'
 import Menu from '../../components/Menu/Menu'
+import Footer from '../../components/Footer/Footer'
 
 
 export default function Delivery() {
-  const [visibleMenu, setVisibleMenu] = useState(false);
+  const [visibleMenu, setVisibleMenu] = useState<boolean>(false);
 
   function handleChangeVisibleMenu() {
     setVisibleMenu(!visibleMenu)
@@ -22,7 +23,7 @@ export default function Delivery() {
         onClick={handleChangeVisibleMenu}
       />
       <main className="main">
-        <div className="main_container">
+        <div className="delivery_container">
           <section className="delivery">
             <div className="delivery_bar">
               <div className="delivery_title">
@@ -35,15 +36,16 @@ export default function Delivery() {
             <div className="payment_bar">
               <div className="payment_title">
                 <img className='bar_logo' src={PaymentLogo} alt="" />
-                <h2 className="subtitle">Оплатить можно удобный для вас способом</h2>
+                <h2 className="subtitle">Оплатить можно удобным для вас способом</h2>
               </div>
               <p className="payment_information">Вы можете забронировать нужный вам товар в любом магазине</p>
               <p className="payment_information">Онлайн банковской картой или через СБП</p>
-              <p className="payment_information">Наличными или картой в магахине</p>
+              <p className="payment_information">Наличными или картой в магазине</p>
             </div>
           </section>
         </div>
       </main>
+      <Footer />
     </>
   )
 }

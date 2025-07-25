@@ -2,14 +2,26 @@ import React, { useContext, useEffect, useState } from 'react'
 import './CartItem.css'
 import DecreaseIcon from './MinusSquareOutlined.svg'
 import IncreaseIcon from './PlusSquareOutlined.svg'
+import { AddedProduct } from '../../pages/cart/cart'
 
-export default function CartItem({photo, name, price, item, updateItemsCount, deleteFromStorageCart}) {
+
+interface CartItemProps {
+    photo:string
+    name:string
+    price:number
+    item: AddedProduct
+    updateItemsCount: (id: number, count: number) => void
+    updateTotalCost: () => void
+    deleteFromStorageCart: (id: number) => void
+}
+
+const CartItem:React.FC<CartItemProps> = ({photo, name, price, item, updateItemsCount, updateTotalCost, deleteFromStorageCart}) => {
     const [count, setCount] = useState(1);
 
     useEffect(() => {
         // Считываем count из localStorage при монтировании компонента
-        const itemsCount = JSON.parse(localStorage.getItem('cart')) || [];
-        const existingItem = itemsCount.find(i => i.id === item.id);
+        const itemsCount = JSON.parse(localStorage.getItem('cart') as unknown as string) || [];
+        const existingItem = itemsCount.find((i:AddedProduct) => i.id === item.id);
         if (existingItem) {
             setCount(existingItem.count);
         }
@@ -19,15 +31,18 @@ export default function CartItem({photo, name, price, item, updateItemsCount, de
         const newCount = count + 1;
         setCount(newCount);
         updateItemsCount(item.id, newCount);
+        updateTotalCost()
     };
 
-    const decreaseCount = () => {
+    const decreaseCount = (id:number) => {
         if (count > 1) {
             const newCount = count - 1;
             setCount(newCount);
             updateItemsCount(item.id, newCount);
+            updateTotalCost()
         } else {
             deleteFromStorageCart(item.id)
+            updateTotalCost()
         }
     };
 
@@ -48,3 +63,5 @@ export default function CartItem({photo, name, price, item, updateItemsCount, de
         </div>
     )
 }
+
+export default CartItem

@@ -1,0 +1,36 @@
+.catalog_title {
+    margin: 10px 0px;
+    font-size: 48px;
+    text-align: center;
+    border-top: 2px solid rgb(185, 185, 185);
+    padding-top: 20px;
+    font-weight: 100;
+}
+
+@media (max-width: 769px) {
+    .catalog_title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 425px) {
+    .catalog_title {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 320px) {
+    .catalog_title {
+        font-size: 24px;
+    }
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}

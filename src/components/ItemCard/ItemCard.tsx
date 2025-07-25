@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import './ItemCard.css'
 import DeleteIcon from './CloseOutlined.svg'
+import type { Cart, AddedProduct } from '../../pages/cart/cart'
 
-export default function ItemCard({id, ItemPhoto, ItemName, ItemDescription, ItemPrice, cart, setCart}) {
+interface ItemCardProps {
+  id:number 
+  ItemPhoto:string
+  ItemName:string
+  ItemDescription:string
+  ItemPrice:number
+  cart:Cart
+  setCart: ([]) => void
+}
+
+const ItemCard:React.FC<ItemCardProps> = ({id, ItemPhoto, ItemName, ItemDescription, ItemPrice, cart, setCart}) => {
   const [isInCart, setIsInCart] = useState(false);
 
   useEffect(() => {
@@ -10,7 +21,7 @@ export default function ItemCard({id, ItemPhoto, ItemName, ItemDescription, Item
 
     if (data) {
       const parsedData = JSON.parse(data);
-      const itemIndex = parsedData.find(item => item.id === id)
+      const itemIndex = parsedData.find((item:AddedProduct) => item.id === id)
 
       if (itemIndex) {
         setIsInCart(itemIndex.isInCart);
@@ -18,15 +29,15 @@ export default function ItemCard({id, ItemPhoto, ItemName, ItemDescription, Item
     }
   }, []) // достаем isInCart из LocalStorage
 
-  function deleteFromStorageCart(id) {
+  function deleteFromStorageCart(id:number) {
     setCart(
       [
         ...cart.filter(item => item.id !== id)
       ]
     );
 
-    let storedItems = JSON.parse(localStorage.getItem('cart'));
-    const itemIndex = storedItems.findIndex(item => item.id === id);
+    let storedItems = JSON.parse(localStorage.getItem('cart') as unknown as string);
+    const itemIndex = storedItems.findIndex((item:AddedProduct) => item.id === id);
 
     if (itemIndex !== -1) {
 
@@ -40,7 +51,7 @@ export default function ItemCard({id, ItemPhoto, ItemName, ItemDescription, Item
     }
   } // вспомогательная функция, удаляет данные из cart в localStorage
 
-  function addToCart(id) {
+  function addToCart(id:number) {
     setIsInCart(true);
 
     setCart([
@@ -56,7 +67,7 @@ export default function ItemCard({id, ItemPhoto, ItemName, ItemDescription, Item
     ])
   }
 
-  function removeCart(id) {
+  function removeCart(id:number) {
     deleteFromStorageCart(id)
     setIsInCart(!isInCart);
   };
@@ -79,3 +90,5 @@ export default function ItemCard({id, ItemPhoto, ItemName, ItemDescription, Item
     </div>
   )
 }
+
+export default ItemCard
